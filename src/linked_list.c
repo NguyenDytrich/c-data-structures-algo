@@ -8,10 +8,10 @@ struct Node {
 };
 typedef struct Node Node;
 
-struct SList {
+struct LinkedList {
 	Node *head;
 };
-typedef struct SList SList;
+typedef struct LinkedList LinkedList;
 
 struct DNode {
 	int value;
@@ -42,7 +42,7 @@ Node* new_node(int value) {
 /**
  * new_dnode - Returns a new node that can be doubly linked
  */
-DNode* new_dnode(int value) {
+DNode *new_dnode(int value) {
 	DNode *n = malloc(sizeof(DNode));
 	n->value = value;
 	return n;
@@ -51,7 +51,7 @@ DNode* new_dnode(int value) {
 /**
  * print_list - Prints all the values sequentially in a singly linked list
  */
-void print_list(SList *list) {
+void print_list(LinkedList *list) {
 	Node *curr = list->head;
 	while(true) {
 		print_node(curr);
@@ -81,8 +81,8 @@ void print_dlist(DList *list) {
 /**
  * new_list - Creates an singly linked list
  */
-SList new_list() {
-	SList list = { 0 }; // Create with null head
+LinkedList new_list() {
+	LinkedList list = { 0 }; // Create with null head
 	return list;
 }
 
@@ -97,7 +97,7 @@ DList new_dlist() {
 /**
  * enqueue - Enqueues a value at the end of a singly linked list
  */
-void enqueue(int value, SList *list) {
+void enqueue(int value, LinkedList *list) {
 	Node *n = new_node(value);
 
 	// If our list is empty, make our newly allocated `Node` the head
@@ -107,8 +107,8 @@ void enqueue(int value, SList *list) {
 	}
 
 	// Otherwise, traverse the list until we reach the tail
-	Node* curr = list->head;
-	Node* next = curr->next;
+	Node *curr = list->head;
+	Node *next = curr->next;
 	while(next) { // Run this loop until we encounter a null pointer
 		curr = curr->next;
 		next = curr->next;
@@ -130,8 +130,8 @@ void enqueue_dlist(int value, DList *list) {
 	}
 
 	// Otherwise, traverse the list until we reach the tail
-	DNode* curr = list->head;
-	DNode* next = curr->next;
+	DNode *curr = list->head;
+	DNode *next = curr->next;
 	while(next) { // Run this loop until we encounter a null pointer
 		curr = curr->next;
 		next = curr->next;
